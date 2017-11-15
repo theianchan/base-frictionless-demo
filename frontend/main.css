@@ -1,0 +1,113 @@
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label,
+legend {
+  color: #212835; }
+
+p,
+input {
+  font-size: 15px;
+  color: #85939D; }
+
+section {
+  margin: 40px 0; }
+
+.fs__window {
+  max-width: 550px;
+  margin: 40px 0;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 10px 45px 0 rgba(0, 0, 0, 0.1); }
+
+.fs__heading {
+  font-size: 32px;
+  font-weight: 600; }
+
+.fs__description {
+  font-size: 15px;
+  margin-bottom: 35px; }
+
+.fs__ol {
+  margin-bottom: 35px;
+  list-style: none; }
+
+.fs__video {
+  width: 470px;
+  height: 270px; }
+
+input[type="submit"] {
+  font-size: 16px;
+  line-height: 1;
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: all ease 300ms;
+  color: #FFFFFF;
+  border: 1px solid #00CC99;
+  border-radius: 4px;
+  background-color: #00CC99; }
+  input[type="submit"]:hover, input[type="submit"]:focus, input[type="submit"]:active {
+    color: #FFFFFF;
+    border-color: #00A378;
+    background-color: #00A378; }
+
+form label,
+form legend {
+  font-size: 13px;
+  line-height: 1.5; }
+form legend {
+  margin-bottom: 6px; }
+form fieldset {
+  max-width: 100%; }
+form input[type=text],
+form input[type=email] {
+  font-size: 14px;
+  line-height: 1;
+  height: auto;
+  margin: 6px 0 20px;
+  padding: 10px 10px 8px;
+  border: 1px solid #D0D8DE;
+  border-radius: 4px;
+  box-shadow: none; }
+  form input[type=text]:focus,
+  form input[type=email]:focus {
+    border: 1px solid #85939D;
+    box-shadow: none; }
+  form input[type=text] input[type="radio"],
+  form input[type=email] input[type="radio"] {
+    margin-bottom: 0; }
+    form input[type=text] input[type="radio"] + label[for],
+    form input[type=email] input[type="radio"] + label[for] {
+      font-size: 14px;
+      line-height: 1;
+      margin: 0; }
+form .hs-form-required {
+  display: none; }
+form .form-columns-1 .hs-input[type=text], form .form-columns-1 .hs-input[type=email],
+form .form-columns-2 .hs-input[type=text],
+form .form-columns-2 .hs-input[type=email],
+form .form-columns-3 .hs-input[type=text],
+form .form-columns-3 .hs-input[type=email] {
+  width: 100% !important; }
+form .inputs-list {
+  margin: 6px 0 20px;
+  list-style: none; }
+  form .inputs-list li {
+    display: inline-block; }
+form .hs-form-radio label {
+  line-height: 33px; }
+  form .hs-form-radio label span {
+    font-size: 14px;
+    margin-right: 20px; }
+form .hs-error-msgs {
+  margin-top: -18px; }
+
+/*# sourceMappingURL=main.css.map */
