@@ -1,3 +1,6 @@
+
+So this demo requires a [Clearbit account](https://clearbit.com), but I'm going to spin up a version that doesn't require one.
+
 # Usage
 
 1. In terminal, go to `frontend`
