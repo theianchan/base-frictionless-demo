@@ -22,6 +22,13 @@ h6 {
   font-weight: 700;
   color: #162B3D; }
 
+a {
+  -webkit-transition: color ease 300ms;
+  transition: color ease 300ms;
+  color: #1A6DED; }
+  a:hover, a:focus, a:active {
+    color: #145CBF; }
+
 .mt--0 {
   margin-top: 0; }
 
@@ -83,6 +90,9 @@ h6 {
   -webkit-box-shadow: 0 10px 45px 0 rgba(0, 0, 0, 0.1);
   box-shadow: 0 10px 45px 0 rgba(0, 0, 0, 0.1); }
 
+.form__label {
+  position: relative; }
+
 .form__input {
   font-size: 14px;
   line-height: 1;
@@ -105,13 +115,35 @@ h6 {
   margin: 35px 0 0;
   padding: 12px 16px;
   cursor: pointer;
-  -webkit-transition: all ease 300ms;
-  transition: all ease 300ms;
+  -webkit-transition: background-color ease 300ms;
+  transition: background-color ease 300ms;
   color: #FFFFFF;
   border-radius: 4px;
   background-color: #1A6DED; }
+  .form__button[disabled] {
+    cursor: not-allowed;
+    background-color: #162B3D; }
+    .form__button[disabled]:hover, .form__button[disabled]:focus, .form__button[disabled]:active {
+      background-color: #162B3D; }
   .form__button:hover, .form__button:focus, .form__button:active {
     color: #FFFFFF;
     background-color: #145CBF; }
+
+.form__image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  width: 79px;
+  height: 79px;
+  margin-left: -94px;
+  content: "";
+  border: 4px solid #FFFFFF;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.15); }
 
 /*# sourceMappingURL=main.css.map */
