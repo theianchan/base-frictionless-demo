@@ -1,0 +1,129 @@
+$medium: 40em;
+$large: 64em;
+
+html,
+body {
+    background-color: #F9ECE4;
+}
+
+html,
+body,
+p,
+label,
+input,
+button {
+    font-family: "Merriweather", serif;
+    font-weight: 400;
+    color: #162B3D;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Archivo Narrow", sans-serif;
+    font-weight: 700;
+    color: #162B3D;
+}
+
+.mt--0 {
+    margin-top: 0;
+}
+.mb--0 {
+    margin-bottom: 0;
+}
+.mt--xs {
+    margin-top: 10px;
+}
+.mb--xs {
+    margin-bottom: 10px;
+}
+.mt--sm {
+    margin-top: 35px;
+}
+.mb--sm {
+    margin-bottom: 35px;
+}
+.mt--md {
+    margin-top: 35px;
+    @media (min-width: $medium) {
+        margin-top: 60px;
+    }
+}
+.mb--md {
+    margin-bottom: 35px;
+    @media (min-width: $medium) {
+        margin-bottom: 60px;
+    }
+}
+.mt--lg {
+    margin-top: 35px;
+    @media (min-width: $medium) {
+        margin-top: 110px;
+    }
+}
+.mb--lg {
+    margin-bottom: 35px;
+    @media (min-width: $medium) {
+        margin-bottom: 110px;
+    }
+}
+.mt--x-lg {
+    margin-top: 35px;
+    @media (min-width: $medium) {
+        margin-top: 160px;
+    }
+}
+.mb--x-lg {
+    margin-bottom: 35px;
+    @media (min-width: $medium) {
+        margin-bottom: 160px;
+    }
+}
+
+.form__card {
+    padding: 40px;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    -webkit-box-shadow: 0 10px 45px 0 rgba(0,0,0,.1);
+            box-shadow: 0 10px 45px 0 rgba(0,0,0,.1);
+}
+
+.form__input {
+    font-size: 14px;
+    line-height: 1;
+    display: block;
+    margin: 0;
+    padding: 10px 10px 8px;
+    border: 1px solid #D0D8DE;
+    border-radius: 4px;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+    &:focus {
+        border: 1px solid #85939D;
+        -webkit-box-shadow: none;
+                box-shadow: none;
+    }
+}
+
+.form__button {
+    font-size: 16px;
+    line-height: 1;
+    display: inline-block;
+    margin: 35px 0 0;
+    padding: 12px 16px;
+    cursor: pointer;
+    -webkit-transition: all ease 300ms;
+            transition: all ease 300ms;
+    color: #FFFFFF;
+    border-radius: 4px;
+    background-color: #1A6DED;
+    &:hover,
+    &:focus,
+    &:active {
+        color: #FFFFFF;
+        background-color: #145CBF;
+    }
+}

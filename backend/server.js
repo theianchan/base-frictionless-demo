@@ -1,13 +1,5 @@
-
-// How to make this production-ready?
-
-// Get a notification if too many failures happen
-// Heroku addons:create papertrail
-// How to keep a record of searched for emails?
-// Implement rate limiting?
-// I saw somewhere that env files are not recommended in a production environment
-
 require('dotenv').load();
+
 var clearbit = require("clearbit")(process.env.CLEARBIT_KEY);
 var express = require("express");
 var cors = require("cors");
