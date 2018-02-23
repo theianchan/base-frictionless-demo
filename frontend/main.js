@@ -1,122 +1,128 @@
+const ENDP = "http://localhost:5000/reach/";
+const WAIT = 10000;
+
 $(document).ready(function() {
 
-  function hidePageOne() {
-    $("#basefs-one").hide();
+  function hideInputForm() {$("#basefs-form-one").hide();};
+  function hideInputMessage() {$("#basefs-message-one").hide()};
+  function hideOutputForm() {$("#basefs-form-two").hide()};
+  function hideOutputMessage() {$("#basefs-message-two").hide()};
+  function showInputForm() {$("#basefs-form-one").show();};
+  function showInputMessage() {$("#basefs-message-one").show()};
+  function showOutputForm() {$("#basefs-form-two").show()};
+  function showOutputMessage() {$("#basefs-message-two").show()};
+
+  function getFieldValue(form, field) {
+    return form.find("[name=" + field + "]").val();
   }
 
-  function showPageOne() {
-    $("#basefs-one").show();
+  function setFieldValue(form, field, value) {
+    form.find("[name=" + field + "]").val(value).change();
   }
 
-  function hidePageTwo() {
-    $("#basefs-two").hide();
+  function setImage(form, id, src) {
+    form.find("#" + id)
+        .css("background-image", "url(" + src + ")")
+        .css("display", "block");
   }
 
-  function showPageTwo() {
-    $("#basefs-two").show();
+  function clearForm(form, resetButtonText) {
+    form.find("input").prop("disabled", false).val("").change();
+    form.find(".form__image").css("display", "none");
+
+    if (resetButtonText) {
+      form.find(".form__button").prop("disabled", false).text(resetButtonText);
+    }
   }
 
-  function showSelfServe() {
-    $("#basefs-two-form").hide();
-    $("[data-fs=heading]").text("Thank you for interest!");
-    $("[data-fs=description]").text("Here's your demo:");
-    showVideo("ZlLmIHa6Kew");
+  function freezeForm(form) {
+    form.find("input").prop("disabled", true);
+    form.find(".form__button").prop("disabled", true).text("One Moment Please...");
   }
 
-  function showMQL() {
-    $("#basefs-two-form").hide();
-    $("[data-fs=heading]").text("Thank you for interest!");
-    $("[data-fs=description]").text("Someone will be in touch shortly with details about your demo.");
-    showVideo("t_T5NG6an00");
+  function resetInputForm() {
+    var form = $("#basefs-form-one");
+    clearForm(form, "Try Again?");
   }
 
-  function showVideo(key) {
-    $("#basefs-two").append("<iframe class='fs__video' src='https://www.youtube.com/embed/" + key + "?autoplay=1&rel=0' frameborder='0' allowfullscreen></iframe>");
+  function showErrorMessage() {
+    $("#basefs-form-one h3").text("💩 Oops! Email Not Found");
   }
 
-  function personalizeForm(email, res) {
-    // end the loading animation
-    hidePageOne();
-    showPageTwo();
+  function personalizeOutputForm(email, res) {
+    hideInputForm();
+    hideInputMessage();
+    showOutputForm();
+    showOutputMessage();
 
-    if (typeof res === 'undefined') return;
+    var form = $("#basefs-form-two");
 
-    // change the messaging
-    $("[data-fs=description]").text("Are these your company details? Please correct any detail we missed and hit submit when you're done to get your free demo.");
+    clearForm(form);
+    setFieldValue(form, "email", email);
 
-    // update form values
-    var form = $("#basefs-two-form"),
-        firstname = res.person.name.givenName,
-        lastname = res.person.name.familyName,
-        company = res.company.name,
-        employees = res.company.metrics.employees;
+    var fname = res.person.name.givenName,
+        lname = res.person.name.familyName,
+        title = res.person.employment.title,
+        photo = res.person.avatar,
+        cname = res.company.name,
+        cemps = res.company.metrics.employeesRange,
+        cinds = res.company.category.industry,
+        clogo = res.company.logo;
 
-    if (firstname) form.find("[name=firstname]").val(firstname).change();
-    if (lastname) form.find("[name=lastname]").val(lastname).change();
-    if (company) form.find("[name=company]").val(company).change();
+    // Kind of fucked up that Clearbit doesn't have Oprah indexed
+    if (email == "oprah@oprah.com") {
+      title = "CEO";
+      cinds = "Media";
+    }
 
-    if (employees >= 1001) {
-      form.find("input[value='1001+']").prop("checked", true).change();
-    } else if (employees >= 201) {
-      form.find("input[value='201-1000']").prop("checked", true).change();
-    } else if (employees >= 50) {
-      form.find("input[value='51-200']").prop("checked", true).change();
-    } else if (employees >= 5) {
-      form.find("input[value='5-50']").prop("checked", true).change();
-    } else if (employees >= 1) {
-      form.find("input[value='1-4']").prop("checked", true).change();
-    } else {}
+    if (fname) setFieldValue(form, "fname", fname);
+    if (lname) setFieldValue(form, "lname", lname);
+    if (title) setFieldValue(form, "title", title);
+    if (cname) setFieldValue(form, "cname", cname);
+    if (cemps) setFieldValue(form, "cemps", cemps);
+    if (cinds) setFieldValue(form, "cinds", cinds);
 
+    if (photo) setImage(form, "photo", photo);
+    if (clogo) setImage(form, "clogo", clogo);
   }
 
-  function getEnrichedData(email) {
+  function enrichEmail(email) {
     var res = {};
     $.ajax({
-        url: "http://localhost:5000/reach/?email=" + email,
-        type: "GET",
-        timeout: 10000
-      }).done(function(data) {
-        res = JSON.parse(data);
-        // analytics.track("Reach Enrichment Succeeded", {email: email});
-        personalizeForm(email, res);
-
-      }).fail(function(jqXHR, textStatus) {
-        // analytics.track("Reach Enrichment Failed", {email: email});
-        personalizeForm(email);
-
-      });
-  }
-
-  function createForms() {
-    hbspt.forms.create({
-      portalId: '241722',
-      formId: 'c2c0ea12-bb98-47da-88dc-45e142785f54',
-      css: '',
-      target: '#basefs-one-form',
-      onFormSubmit: function(form) {
-        var email = form.find("[name=email]").val();
-        $("#basefs-two-form [name=email]").val(email).change();
-        getEnrichedData(email);
-        // show the loading animation
-      }
-    });
-    hbspt.forms.create({
-      portalId: '241722',
-      formId: '5ee4ab67-2bc4-4c57-a482-95cd33cc696a',
-      css: '',
-      target: '#basefs-two-form',
-      onFormSubmit: function(form) {
-        var employees = form.find("[name=company_size_radio_]:checked").val();
-        if (employees == "1-4") {
-          showSelfServe();
-        } else {
-          showMQL();
-        }
-      }
+      url: ENDP + "?email=" + email,
+      timeout: WAIT,
+      type: "GET"
+    }).done(function(data) {
+      res = JSON.parse(data);
+      personalizeOutputForm(email, res);
+    }).fail(function(jqXHR, textStatus) {
+      resetInputForm();
+      showErrorMessage();
     });
   }
 
-  hidePageTwo();
-  createForms();
+  function initInputForm() {
+    var form = $("#basefs-form-one");
+    form.on("submit", function(event) {
+      event.preventDefault();
+
+      freezeForm(form);
+      enrichEmail(getFieldValue(form, "email"));
+    });
+  }
+
+  function initSuggested() {
+    var suggested = $("[data-suggested]");
+    var form = $("#basefs-form-one");
+
+    suggested.on("click", function(event) {
+      event.preventDefault();
+
+      setFieldValue(form, "email", $(event.target).text());
+    });
+  }
+
+  initInputForm();
+  initSuggested();
 
 });
