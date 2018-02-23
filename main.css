@@ -29,6 +29,13 @@ a {
   a:hover, a:focus, a:active {
     color: #145CBF; }
 
+.small {
+  font-size: 12px; }
+  .small a {
+    color: #162B3D; }
+    .small a:hover, .small a:focus, .small a:active {
+      color: #162B3D; }
+
 .mt--0 {
   margin-top: 0; }
 
@@ -84,11 +91,14 @@ a {
       margin-bottom: 160px; } }
 
 .form__card {
-  padding: 40px;
+  padding: 40px 20px;
   border-radius: 8px;
   background-color: #FFFFFF;
   -webkit-box-shadow: 0 10px 45px 0 rgba(0, 0, 0, 0.1);
   box-shadow: 0 10px 45px 0 rgba(0, 0, 0, 0.1); }
+  @media (min-width: 40em) {
+    .form__card {
+      padding: 40px; } }
 
 .form__label {
   position: relative; }

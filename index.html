@@ -29,6 +29,10 @@
       <p>A form that tells us everything we want to know about the people who want product demos, without them having to tell the form those things.</p>
       <p>The form works by asking the people who want product demos for their email (in this case their company email), and making an API call to an enrichment service with that email, returning with as much information as that enrichment service can provide about the people (and companies) connected to the email.</p>
       <p>For the enrichment service we use <a href="https://clearbit.com/docs#enrichment-api" target="_blank">Clearbit</a>, but feel free to use any enrichment service you have lying around in your kitchen.</p>
+
+      <div class="mt--md show-for-large">
+        <p class="small"><a href="https://github.com/theianchan/base-frictionless-demo">Frictionless Demo for Base on Github</a> | <a href="https://github.com/segmentio/frictionless-signup">Inspired by Segment</a> | <a href="http://theianchan.com">Built by Ian Chan</a></p>
+      </div>
     </div>
 
     <!-- Interactive Demo -->
@@ -46,12 +50,13 @@
 
       <!-- Step One Message -->
       <div id="basefs-message-one" class="mb--md">
-        <p>Or try one of these: <a data-suggested>elon@spacex.com</a>, <a data-suggested>oprah@oprah.com</a>.</p>
+        <p>Or try one of these: <a data-suggested>elon@spacex.com</a>, <a data-suggested>jack@twitter.com</a>, <a data-suggested>marissa@yahoo.com</a>, <a data-suggested>oprah@oprah.com</a>.
+        </p>
       </div>
 
       <!-- Step Two Form -->
       <form id="basefs-form-two" class="form__card mb--md" style="display: none;">
-        <h3 class="mb--sm">🎉 Ready for Your Demo!</h3>
+        <!-- <h3 class="mb--sm">🎉 Ready for Your Demo!</h3> -->
 
         <!-- <label class="form__label mb--xs" for="email">Company Email:</label> -->
         <!-- <input class="form__input" type="email" id="email" name="email" autocomplete="off"> -->
@@ -88,15 +93,25 @@
           <input type="text" class="form__input" id="cinds" name="cinds" autocomplete="off">
         </div>
 
-        <button class="form__button" disabled>Get Your Demo</button>
+        <!-- <button class="form__button" disabled>Get Your Demo</button> -->
       </form>
 
       <!-- Step Two Message -->
       <div id="basefs-message-two" class="mb--md" style="display: none;">
         <p>... And that's really just the beginning.</p>
+
+        <p>Clearbit returns <a href="https://clearbit.com/docs#enrichment-api" target="_blank">over 80 data points</a> per contact, making this experience a great starting point for tailored product walkthroughs, actionable lead scoring, or unnecessarily specific pranks on friends.</p>
+
+        <p>Check out the repo <a href="https://github.com/theianchan/base-frictionless-demo">here</a>.</p>
       </div>
     </div>
 
+  </div>
+
+  <div class="row align-center hide-for-large">
+    <div class="column small-12 medium-10 large-12">
+      <p class="small"><a href="https://github.com/theianchan/base-frictionless-demo">Frictionless Demo for Base on Github</a> | <a href="https://github.com/segmentio/frictionless-signup">Inspired by Segment</a> | <a href="http://theianchan.com">Built by Ian Chan</a></p>
+    </div>
   </div>
 
 </body>
