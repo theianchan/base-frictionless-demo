@@ -69,6 +69,12 @@ $(document).ready(function() {
         cinds = res.company.category.industry,
         clogo = res.company.logo;
 
+    // Kind of fucked up that Clearbit doesn't have Oprah indexed
+    if (email == "oprah@oprah.com") {
+      title = "CEO";
+      cinds = "Media";
+    }
+
     if (fname) setFieldValue(form, "fname", fname);
     if (lname) setFieldValue(form, "lname", lname);
     if (title) setFieldValue(form, "title", title);
@@ -105,6 +111,18 @@ $(document).ready(function() {
     });
   }
 
+  function initSuggested() {
+    var suggested = $("[data-suggested]");
+    var form = $("#basefs-form-one");
+
+    suggested.on("click", function(event) {
+      event.preventDefault();
+
+      setFieldValue(form, "email", $(event.target).text());
+    });
+  }
+
   initInputForm();
+  initSuggested();
 
 });
